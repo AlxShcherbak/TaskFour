@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - taskFour@localhost" uuid="ef5f9c00-5bd2-4732-acff-a8086f07e8a8">
+    <database-info product="MySQL" version="5.5.45" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="taskFour"/>
+    <table name="ACCOUNT" schema="" catalog="taskFour" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOGIN" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="ROLE" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_FACULTY_ACCOUNT" table="FACULTY" schema="" catalog="taskFour" columns="TEACHER"/>
+      <exported-key name="FK_FACULTY-STUDENT_ACCOUNT" table="FACULTY-STUDENT" schema="" catalog="taskFour" columns="STUDENT"/>
+      <exported-key name="FK_MARK_ACCOUNT" table="MARK" schema="" catalog="taskFour" columns="STUDENT"/>
+      <index name="ID" unique="true" columns="ID"/>
+      <index name="LOGIN" unique="true" columns="LOGIN"/>
+    </table>
+    <table name="COURSE" schema="" catalog="taskFour" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="TITLE" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="KAFEDRA" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <exported-key name="FK_FACULTY_COURSE" table="FACULTY" schema="" catalog="taskFour" columns="COURSE"/>
+      <index name="ID" unique="true" columns="ID"/>
+    </table>
+    <table name="FACULTY" schema="" catalog="taskFour" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="COURSE" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="STATUS" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="JzAn"/>
+      <column name="TEACHER" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <primary-key name="PRIMARY" columns="ID"/>
+      <foreign-key name="FK_FACULTY_ACCOUNT" columns="TEACHER" ref-table="ACCOUNT" ref-schema="" ref-catalog="taskFour" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_FACULTY_COURSE" columns="COURSE" ref-table="COURSE" ref-schema="" ref-catalog="taskFour" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_FACULTY-STUDENT_FACULTY" table="FACULTY-STUDENT" schema="" catalog="taskFour" columns="FACULTY"/>
+      <exported-key name="FK_MARK_FACULTY" table="MARK" schema="" catalog="taskFour" columns="FACULTY"/>
+      <index name="ID" unique="true" columns="ID"/>
+    </table>
+    <table name="FACULTY-STUDENT" schema="" catalog="taskFour" type="TABLE">
+      <column name="FACULTY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="STUDENT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="FK_FACULTY-STUDENT_ACCOUNT" columns="STUDENT" ref-table="ACCOUNT" ref-schema="" ref-catalog="taskFour" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_FACULTY-STUDENT_FACULTY" columns="FACULTY" ref-table="FACULTY" ref-schema="" ref-catalog="taskFour" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="MARK" schema="" catalog="taskFour" type="TABLE">
+      <column name="STUDENT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="FACULTY" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MARK" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="FK_MARK_ACCOUNT" columns="STUDENT" ref-table="ACCOUNT" ref-schema="" ref-catalog="taskFour" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_MARK_FACULTY" columns="FACULTY" ref-table="FACULTY" ref-schema="" ref-catalog="taskFour" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+  </data-source>
+</component>

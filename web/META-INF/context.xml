@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/dbcp" docBase="dbcp" debug="5"
+         reloadable="true" crossContext="true">
+
+        <Resource name="jdbc/confluence" auth="Container"
+                  type="javax.sql.DataSource" removeAbandoned="true"
+                  removeAbandonedTimeout="30" maxActive="100"
+                  maxIdle="30" maxWait="10000" username="root"
+                  password=""
+                  driverClassName="com.mysql.jdbc.Driver"
+                  url="jdbc:mysql://localhost:3306/taskFour"/>
+
+        <Connector port="80" maxHttpHeaderSize="8192" maxProcessors="150"
+                   maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+                   enableLookups="false" redirectPort="8443" acceptCount="150"
+                   connectionTimeout="20000" disableUploadTimeout="true" />
+
+
+</Context>

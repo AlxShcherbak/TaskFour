@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <resource-ref>
+        <description>my connection</description>
+        <res-ref-name>jdbc/confluence</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+
+    <filter>
+        <filter-name>FilterEntered</filter-name>
+        <filter-class>com.ua.servlets.filters.FilterEntered</filter-class>
+        <init-param>
+            <param-name>log4j-properties-location</param-name>
+            <param-value>WEB-INF/log4j.properties</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterEntered</filter-name>
+        <servlet-name>ServletEntered</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterLogin</filter-name>
+        <filter-class>com.ua.servlets.filters.FilterLogIn</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterLogin</filter-name>
+        <servlet-name>ServletLogIn</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterRegistration</filter-name>
+        <filter-class>com.ua.servlets.filters.FilterRegistration</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterRegistration</filter-name>
+        <servlet-name>ServletRegistration</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterSetMarks</filter-name>
+        <filter-class>com.ua.servlets.filters.FilterSetMarks</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterSetMarks</filter-name>
+        <servlet-name>ServletSetMarks</servlet-name>
+    </filter-mapping>
+
+
+    <servlet>
+        <servlet-name>ServletEntered</servlet-name>
+        <servlet-class>com.ua.servlets.ServletEntered</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletEntered</servlet-name>
+        <url-pattern>/indexEnter</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletLogIn</servlet-name>
+        <servlet-class>com.ua.servlets.ServletLogin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletLogIn</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletLogOut</servlet-name>
+        <servlet-class>com.ua.servlets.ServletLogOut</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletLogOut</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletRegistration</servlet-name>
+        <servlet-class>com.ua.servlets.ServletRegistration</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletRegistration</servlet-name>
+        <url-pattern>/regist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletGoToFaculty</servlet-name>
+        <servlet-class>com.ua.servlets.ServletGoToFaculty</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletGoToFaculty</servlet-name>
+        <url-pattern>/gotoFaculty</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletSetMarks</servlet-name>
+        <servlet-class>com.ua.servlets.ServletSetMarks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletSetMarks</servlet-name>
+        <url-pattern>/setMarks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletViewFacultyStudent</servlet-name>
+        <servlet-class>com.ua.servlets.ServletViewFacultyStudent</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletViewFacultyStudent</servlet-name>
+        <url-pattern>/viewStudent</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletViewFacultyTeacher</servlet-name>
+        <servlet-class>com.ua.servlets.ServletViewFacultyTeacher</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletViewFacultyTeacher</servlet-name>
+        <url-pattern>/viewTeacher</url-pattern>
+    </servlet-mapping>
+
+</web-app>

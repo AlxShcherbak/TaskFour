@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://D:/Courses/Epam Spring 2015/Task4Fin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pom.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/AccountDaoJDBCImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/ConnectionPool.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/DAOFactory/DAOFactory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/DAOFactory/DataSourceConnPoolFactory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/FunctionConn.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/interfaces/AccountDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/interfaces/FacultyDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/dao/mappers/Mapper.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/ua/servlets/Dispatcher.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/META-INF" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/lib" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/log4j.properties" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
