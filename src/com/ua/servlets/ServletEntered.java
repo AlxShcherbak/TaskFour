@@ -22,9 +22,13 @@ import java.sql.SQLException;
 
 /**
  * Created by AlxEx on 03.12.2015.
+ * Начальный сервлет инит работу с сервисом
  */
 @WebServlet(name = "ServletEntered")
 public class ServletEntered extends HttpServlet {
+    /**
+     * логер Log4j
+     */
     static Logger logger = Logger.getLogger(ServletEntered.class.toString());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +40,7 @@ public class ServletEntered extends HttpServlet {
         String login = null;
         String role = null;
 
+        // проверка на существование полей логинизации в сессии session.attribute - login
         if (session.getAttribute("access") != null && session.getAttribute("login") != null &&
                 session.getAttribute("role") != null) {
             login = (String) session.getAttribute("login");
@@ -44,22 +49,25 @@ public class ServletEntered extends HttpServlet {
         }
         String page = "/indexEnter";
 
+
+        // проверка разрешения вхождения на сервис
         if (access) {
-            page = "/login";
-            if (role.toLowerCase().equals("student".toLowerCase())) {
+            page = "/login"; //сервлет на отработку
+            // определение роли пользователя
+            if (role.toLowerCase().equals("student".toLowerCase())) { // пользователь студент
                 logger.info("admin user in : USER - " + login);
             } else {
-                if (role.toLowerCase().equals("teacher".toLowerCase())) {
+                if (role.toLowerCase().equals("teacher".toLowerCase())) { // пользователь преподователь
                     logger.info("admin user in : USER - " + login);
                 }
             }
         } else {
-            logger.info("guest user in");
+            logger.info("guest user in"); // пользователь гость - логинизация небыла провелена
             session.setAttribute("LoginFould", "");
             Dispatcher.dispatch(request, response, "pages/indexGuest");
             return;
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(page); // переадресация на сервлет с адресом page
         dispatcher.forward(request, response);
     }
 }

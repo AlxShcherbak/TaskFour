@@ -14,6 +14,7 @@ import java.io.IOException;
 
 /**
  * Created by AlxEx on 03.12.2015.
+ * выход с сервиса
  */
 @WebServlet(name = "ServletLogOut")
 public class ServletLogOut extends HttpServlet {

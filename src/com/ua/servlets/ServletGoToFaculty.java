@@ -17,18 +17,19 @@ import java.io.IOException;
 
 /**
  * Created by AlxEx on 03.12.2015.
+ * запись студента на факультатив
  */
 @WebServlet(name = "ServletGoToFaculty")
 public class ServletGoToFaculty extends HttpServlet {
     DAOFactory daoFactory = DataSourceConnPoolFactory.getDAOFactory();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int stID = Integer.valueOf(request.getParameter("student"));
-        int fID = Integer.valueOf(request.getParameter("faculty"));
-        daoFactory.getAccountDAO().goToFacylty(stID, fID);
+        int stID = Integer.valueOf(request.getParameter("student")); // ид  студента
+        int fID = Integer.valueOf(request.getParameter("faculty")); // ид факультатива
+        daoFactory.getAccountDAO().goToFacylty(stID, fID); // добавление в базу оценки
 
         String page = "/login";
-        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(page); // переход на сервлет по адресу /login
         dispatcher.forward(request, response);
     }
 

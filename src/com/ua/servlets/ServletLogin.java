@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * Created by AlxEx on 03.12.2015.
+ * Вход на сервис - логинизация
  */
 @WebServlet(name = "ServletLogin")
 public class ServletLogin extends HttpServlet {
@@ -39,14 +40,14 @@ public class ServletLogin extends HttpServlet {
         User loginingUser;
 
         if (access) {
-            loginingUser = daoFactory.getAccountDAO().getUserByLogin((String) session.getAttribute("login"));
+            loginingUser = daoFactory.getAccountDAO().getUserByLogin((String) session.getAttribute("login")); // выборка пользователя по логину
         } else {
             String login = request.getParameter("login");
             String password = request.getParameter("password");
 
-            loginingUser = daoFactory.getAccountDAO().getUserByLogin(login);
+            loginingUser = daoFactory.getAccountDAO().getUserByLogin(login); // выборка пользователя по логину
 
-            if (loginingUser.getPassword().equals(password)) {
+            if (loginingUser.getPassword().equals(password)) { // валидация введеного пароля
                 session.setAttribute("login", login);
                 session.setAttribute("access", "true");
                 session.setAttribute("role", UserRole.getRole(loginingUser).toString());
@@ -56,7 +57,7 @@ public class ServletLogin extends HttpServlet {
 
 
         if (loginingUser != null && loginingUser.getClass().equals(Student.class)) {
-            //������� ���������� � ��������� � ��������� �������������
+            //Выборка посещаемых и доступных к посещению факультативов
             Student st = (Student) loginingUser;
             List<Faculty> facultyListGoes = daoFactory.getFacultyDao().getFacultyListByStudent(st);
             List<Faculty> facultyListAvailable = new ArrayList<>();
@@ -97,7 +98,7 @@ public class ServletLogin extends HttpServlet {
 
 
         if (loginingUser != null && loginingUser.getClass().equals(Student.class)) {
-            //������� ���������� � ��������� � ��������� �������������
+            //Выборка посещаемых и доступных к посещению факультативов
             Student st = (Student) loginingUser;
             List<Faculty> facultyListGoes = daoFactory.getFacultyDao().getFacultyListByStudent(st);
             List<Faculty> facultyListAvailable = new ArrayList<>();

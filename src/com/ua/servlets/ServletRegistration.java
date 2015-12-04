@@ -19,6 +19,7 @@ import java.io.IOException;
 
 /**
  * Created by AlxEx on 03.12.2015.
+ * регистрация пользователя - новый пользователь всегда студент
  */
 @WebServlet(name = "ServletRegistration")
 public class ServletRegistration extends HttpServlet {

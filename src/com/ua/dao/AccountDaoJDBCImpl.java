@@ -21,6 +21,9 @@ import java.util.List;
 /**
  * User: Alx Shcherbak
  * Date: 02.12.2015
+ * @author AlxEx
+ * @see com.ua.dao.interfaces.AccountDao
+ * @see com.ua.dao.AbstractDaoImpl
  */
 public class AccountDaoJDBCImpl extends AbstractDaoImpl implements AccountDao {
 
